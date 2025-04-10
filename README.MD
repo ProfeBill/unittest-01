@@ -3,6 +3,8 @@
 Este proyecto contiene la prueba unitaria más básica que puede crearse en Python
 para ser usada como un modelo para crear nuevas pruebas.
 
+Solo para probar ocmo hacer un PR
+
 ## Contenido
 
 ### CreditCardTests.py
