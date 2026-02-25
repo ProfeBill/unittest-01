@@ -9,10 +9,6 @@ y la lógica queda en Payment.py
 try:
     print("Este programa le permite calcular la cuota a pagar por una compra con tarjeta de credito")
     monto = float( input("Monto de la compra:") )
-
-    if monto == 0 :
-        print( "La compra debe ser mayor que cero")
-
     tasa = float( input("Tasa de interés de la tarjeta:") ) / 100
     plazo = float( input("Numero de cuotas en que va a diferir la compra:") )
 

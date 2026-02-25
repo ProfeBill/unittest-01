@@ -62,11 +62,25 @@ class CreditCardTest(unittest.TestCase):
         #SALIDAS ESPERADAS
 
         # Verifica que si se genere una excepcion adentro del bloque with
-        with self.assertRaises( Exception ) :
+        with self.assertRaises( logica_tarjeta.CompraInvalida ) :
             cuota_calculada = logica_tarjeta.calcular_cuota( compra, interes, plazo )
 
+    def test_plazo_cero( self ):
+        compra = 80000
+        interes = 2.4 / 100
+        plazo = 0
 
+        # Verifica que si se genere una excepcion adentro del bloque with
+        with self.assertRaises( logica_tarjeta.PlazoInvalido ) :
+            cuota_calculada = logica_tarjeta.calcular_cuota( compra, interes, plazo )
 
+    def test_usura( self ):
+        compra = 80000
+        interes = 12.4 / 100
+        plazo = 60
+
+        with self.assertRaises( logica_tarjeta.TasaExcesiva ):
+            logica_tarjeta.calcular_cuota( compra, interes, plazo)
 
 
 # Este fragmento de codigo permite ejecutar la prueb individualmente

@@ -1,7 +1,13 @@
-# Exepcion personalizada que se usa en un caso de error particular
-class TasaExcesiva( Exception ): 
-    pass
+class CompraInvalida( Exception ):
+    """ Excepcion que se dispara cuando el valor de la compra es cero """
 
+class PlazoInvalido( Exception ):
+    """ Excepcion que se dispara cuando el numero de cuotas es menor que uno """
+
+class TasaExcesiva( Exception ):
+    """ Se dispara cuando la tasa supera al maximo permitido por la ley """
+
+# Exepcion personalizada que se usa en un caso de error particular
 def calcular_cuota(compra,tasa,plazo):
     """
     Calcula la cuota a pagar por una compra con una tarjeta de crédito
@@ -13,7 +19,13 @@ def calcular_cuota(compra,tasa,plazo):
     """
     if compra == 0 :
     #### RETORNAR UN ERROR
-        raise Exception("El valor de la compra debe ser mayor que cero")
+        raise CompraInvalida("El valor de la compra debe ser mayor que cero")
+    
+    if plazo < 1 :
+        raise PlazoInvalido("El numero de cuotas debe ser mayor a cero")
+    
+    if tasa > 4 / 100 :
+        raise TasaExcesiva( f"La tasa de interes ingresada {tasa * 100} % supera el tope de usura. Ingrese un valor de tasa mensual inferior a 4%")
  
     if tasa == 0:
         """ 
